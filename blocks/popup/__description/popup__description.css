@@ -1,8 +1,12 @@
 .popup__description {
-    all: unset;
+    outline-color: #3F8FD2;
+    border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     max-width: 358px;
     margin: 0 36px 48px;
+    padding: 0 0 10px;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 @media screen and (max-width: 767px) {

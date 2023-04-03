@@ -2,6 +2,7 @@ const editBtn = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const closeBtn = document.querySelector('.popup__close-btn');
 const saveBtn = document.querySelector('.popup__save-btn');
+const likeBtn = document.querySelector('.element__like')
 let popupContent = document.querySelector('.popup__content');
 let inputName = popupContent.querySelector('.popup__name');
 let inputDescription = popupContent.querySelector('.popup__description');
@@ -20,6 +21,12 @@ function closePopup() {
 
 editBtn.addEventListener('click', openPopup);
 closeBtn.addEventListener('click', closePopup);
+
+function like() {
+    likeBtn.classList.toggle('element__like_active')
+}
+
+likeBtn.addEventListener('click', like);
 
 function handleFormSubmit(evt) {
     evt.preventDefault();

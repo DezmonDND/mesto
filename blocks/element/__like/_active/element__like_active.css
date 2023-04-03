@@ -1,4 +1,4 @@
-.element__like {
+.element__like_active {
     all: unset;
     max-width: 22px;
     width: 100%;
@@ -6,11 +6,6 @@
     margin-top: 5px;
     margin-right: 5px;
     background-size: cover;
-    background-image: url(../../../images/like_btn.svg);
     cursor: pointer;
-}
-
-.element__like:hover {
-    opacity: .5;
-    transition: .5s;
+    background-image: url(../../../../images/like_btn_black.svg);
 }

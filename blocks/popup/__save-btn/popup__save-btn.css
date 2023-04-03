@@ -8,7 +8,14 @@
     background-color: #000000;
     border-radius: 2px;
     color: #FFFFFF;
-    padding: 16px 125px;
+    padding: 14px 125px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.popup__save-btn:hover {
+    opacity: .8;
+    transition: .5s;
 }
 
 @media screen and (max-width: 767px) {

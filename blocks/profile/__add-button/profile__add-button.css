@@ -9,6 +9,13 @@
     background-position: center;
     align-self: center;
     justify-self: end;
+    cursor: pointer;
+    border-radius: 2px
+}
+
+.profile__add-button:hover {
+    opacity: .6;
+    transition: .5s;
 }
 
 @media screen and (max-width: 767px) {
