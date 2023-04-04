@@ -1,16 +1,24 @@
-.popup__description {
+.popup__input {
     outline-color: #3F8FD2;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     max-width: 358px;
-    margin: 0 36px 48px;
+    margin: 47px 36px 30px;
     padding: 0 0 10px;
     font-size: 14px;
     line-height: 17px;
 }
 
+.popup__input:last-of-type {
+    margin: 0 36px 48px;
+}
+
 @media screen and (max-width: 767px) {
-    .popup__description {
+    .popup__input {
+        margin: 75px 22px 30px;
+    }
+
+    .popup__input:last-of-type {
         margin: 0 22px 45px;
     }
 }
