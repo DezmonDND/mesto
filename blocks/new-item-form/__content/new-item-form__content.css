@@ -1,0 +1,14 @@
+.new-item-form__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 430px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    background-color: #FFFFFF;
+}
+
+@media screen and (max-width: 767px) {
+    .new-item-form__content {
+        max-width: 282px;
+    }
+}

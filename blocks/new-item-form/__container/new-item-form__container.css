@@ -1,0 +1,5 @@
+.new-item-form__container {
+    display: flex;
+    margin: auto;
+    position: relative;
+}
