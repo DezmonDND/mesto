@@ -1,7 +1,7 @@
-.new-item-form {
+.increase-image-form {
     background-color: rgba(0, 0, 0, .5);
-    display: flex;
     position: fixed;
+    display: flex;
     top: 0;
     left: 0;
     right: 0;

@@ -1,11 +1,11 @@
 const editBtn = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const closeBtn = document.querySelector('.popup__close-btn');
-let popupContent = document.querySelector('.popup__content');
-let inputName = popupContent.querySelector('#popupName');
-let inputDescription = popupContent.querySelector('#popupDescription');
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const popupContent = document.querySelector('.popup__content');
+const inputName = popupContent.querySelector('#popupName');
+const inputDescription = popupContent.querySelector('#popupDescription');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
 function openPopup() {
     popup.classList.add('popup_opened');
@@ -75,51 +75,63 @@ const initialCards = [
 
 const cardsTemplate = document.getElementById('cards-template');
 const elementsContainer = document.querySelector('.elements');
-let likeBtnImage = cardsTemplate.querySelector('.element__like');
-let newItemContent = document.querySelector('.new-item-form__content');
 
-const createCardElement = (initialCards) => {
+const newItemContent = document.querySelector('.new-item-form__content');
+
+const createCardElement = (imgName, imgLink) => {
     const cardElement = cardsTemplate.content.querySelector('.element').cloneNode(true);
     const elementImage = cardElement.querySelector('.element__image');
     const elementTitle = cardElement.querySelector('.element__title');
-    elementImage.src = initialCards.link;
-    elementTitle.textContent = initialCards.name;
+    const likeBtnImage = cardElement.querySelector('.element__like');
+    const trashBtn = cardElement.querySelector('.element__trash-btn');
+
+    elementImage.src = imgLink;
+    elementTitle.textContent = imgName;
+    likeBtnImage.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('element__like_active');
+    });
+
+    const imagePopup = document.querySelector('.increase-image-form');
+    const imageCloseBtn = imagePopup.querySelector('.increase-image-form__close-btn');
+    const imagePopupPicture = imagePopup.querySelector('.increase-image-form__picture');
+    const imagePopupDescription = imagePopup.querySelector('.increase-image-form__description');
+
+    function openImagePopup() {
+        imagePopup.classList.add('increase-image-form_opened');
+        imagePopupDescription.textContent = elementTitle.textContent;
+        imagePopupPicture.src = elementImage.src;
+    }
+
+    elementImage.addEventListener('click', openImagePopup);
+
+    function closeImagePopup() {
+        imagePopup.classList.remove('increase-image-form_opened');
+    }
+
+    imageCloseBtn.addEventListener('click', closeImagePopup)
+
+    function removeCard() {
+        cardElement.remove();
+    }
+
+    trashBtn.addEventListener('click', removeCard);
+
     return cardElement;
 };
 
-initialCards.forEach((cardElement) => {  
-    const newCard = createCardElement(cardElement);
-    elementsContainer.append(newCard); 
-    
+initialCards.forEach((item) => {
+    const newCard = createCardElement(item.name, item.link);
+    elementsContainer.append(newCard);
 });
 
-// likeBtnImage.addEventListener('click', function(evt) {
-//     evt.target.classList.toggle('element__like_active');
-// })
-
-
-// function likeBtn() {
-//     likeBtnImage.target.classList.toggle('element__like_active');
-// }
-
-// likeBtnImage.addEventListener('click', likeBtn);
-// function createNewPhoto(newTitle, newLink) {
-//     const newTitle = document.getElementById('newItemName');
-//     const newLink = document.getElementById('newItemLink');
-    
-//     initialCards.name = newTitle.textContent;
-//     initialCards.link = newLink.value;
-//     return NewPhoto;
-// }
-
-// initialCards.unshift(NewPhoto);
-
-
+const newItemName = document.getElementById('newItemName');
+const newItemLink = document.getElementById('newItemLink');
 
 function createFormSubmit(evt) {
     evt.preventDefault();
-    elementTitle.textContent = newItemName.value;
-    elementImage.src = newItemLink.value;
+    imgName = newItemName.value;
+    imgLink = newItemLink.value;
+    elementsContainer.prepend(createCardElement(imgName, imgLink));
     closeNewItem();
 }
 

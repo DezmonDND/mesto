@@ -52,21 +52,33 @@
         <form class="new-item-form__content" name="newItemForm" method="post">
           <h2 class="new-item-form__title">Новое место</h2>
           <input type="text" class="new-item-form__input" id="newItemName" placeholder="Название" name="profileName">
-          <input type="text" class="new-item-form__input" id="newItemLink" placeholder="Ссылка на картинку" name="profileAbout">
+          <input type="text" class="new-item-form__input" id="newItemLink" placeholder="Ссылка на картинку"
+            name="profileAbout">
           <button class="new-item-form__save-btn" type="submit">Создать</button>
         </form>
       </div>
-  </div>
-  <template id="cards-template">
-    <article class="element">
-      <img src="" alt="" class="element__image">
-      <div class="element__description">
-        <h2 class="element__title"></h2>
-        <button class="element__like" type="button"></button>
+    </div>
+    <div class="increase-image-form">
+      <div class="increase-image-form__container">
+        <button class="increase-image-form__close-btn" type="button"></button>
+        <div class="increase-image-form__content">
+          <img src="" alt="" class="increase-image-form__picture">
+          <figcaption class="increase-image-form__description"></figcaption>
+        </div>
+        
       </div>
-    </article>
-  </template>
-  <script src="./scripts/index.js"></script>
+    </div>
+    <template id="cards-template">
+      <article class="element">
+        <img src="" alt="" class="element__image">
+        <button class="element__trash-btn" type="button"></button>
+        <div class="element__description">
+          <h2 class="element__title"></h2>
+          <button class="element__like" type="button"></button>
+        </div>
+      </article>
+    </template>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
