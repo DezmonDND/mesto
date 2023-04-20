@@ -34,35 +34,34 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Недосейкин Денис</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup-edit-profile">
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
         <form class="popup__content" name="profileForm" method="post">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input type="text" class="popup__input" id="popupName" placeholder="Имя" name="profileName">
           <input type="text" class="popup__input" id="popupDescription" placeholder="О себе" name="profileAbout">
-          <button class="popup__save-btn" type="submit">Сохранить</button>
+          <button class="popup__save-btn popup__profile-save-btn" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="new-item-form">
-      <div class="new-item-form__container">
-        <button class="new-item-form__close-btn" type="button"></button>
-        <form class="new-item-form__content" name="newItemForm" method="post">
-          <h2 class="new-item-form__title">Новое место</h2>
-          <input type="text" class="new-item-form__input" id="newItemName" placeholder="Название" name="profileName">
-          <input type="text" class="new-item-form__input" id="newItemLink" placeholder="Ссылка на картинку"
-            name="profileAbout">
-          <button class="new-item-form__save-btn" type="submit">Создать</button>
+    <div class="popup popup-edit-card">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <form class="popup__content popup-edit-card__content" name="profileForm" method="post">
+          <h2 class="popup__title">Новое место</h2>
+          <input type="text" class="popup__input" id="newItemName" placeholder="Название" name="profileName">
+          <input type="text" class="popup__input" id="newItemLink" placeholder="Ссылка на картинку" name="profileAbout">
+          <button class="popup__save-btn popup__create-card-btn" type="submit">Создать</button>
         </form>
       </div>
     </div>
-    <div class="increase-image-form">
-      <div class="increase-image-form__container">
-        <button class="increase-image-form__close-btn" type="button"></button>
-        <div class="increase-image-form__content">
-          <img class="increase-image-form__picture">
-          <figcaption class="increase-image-form__description"></figcaption>
+    <div class="popup popup-image">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <div class="popup__image-content">
+          <img class="popup__picture">
+          <figcaption class="popup__image-description"></figcaption>
         </div>
       </div>
     </div>
@@ -77,7 +76,7 @@
       </article>
     </template>
     <script src="./scripts/index.js"></script>
-  </div>  
+  </div>
 </body>
 
 </html>
