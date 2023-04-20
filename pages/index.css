@@ -32,12 +32,3 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__image-content/popup__image-content.css);
 @import url(../blocks/popup/__image-description/popup__image-description.css);
-@import url();
-@import url(../blocks/new-item-form/new-item-form.css);
-@import url(../blocks/new-item-form/__close-btn/new-item-form__close-btn.css);
-@import url(../blocks/new-item-form/__container/new-item-form__container.css);
-@import url(../blocks/new-item-form/__content/new-item-form__content.css);
-@import url(../blocks/new-item-form/__input/new-item-form__input.css);
-@import url(../blocks/new-item-form/__save-btn/new-item-form__save-btn.css);
-@import url(../blocks/new-item-form/__title/new-item-form__title.css);
-@import url(../blocks/new-item-form/_opened/new-item-form_opened.css);
