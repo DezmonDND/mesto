@@ -40,7 +40,8 @@
         <form class="popup__content" name="profileForm" method="post">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input type="text" class="popup__input" id="popupName" placeholder="Имя" name="profileName" required>
-          <input type="text" class="popup__input" id="popupDescription" placeholder="О себе" name="profileAbout" required>
+          <input type="text" class="popup__input" id="popupDescription" placeholder="О себе" name="profileAbout"
+            required>
           <button class="popup__save-btn popup__profile-save-btn" type="submit">Сохранить</button>
         </form>
       </div>
@@ -51,7 +52,8 @@
         <form class="popup__content popup-edit-card__content" name="profileForm" method="post">
           <h2 class="popup__title">Новое место</h2>
           <input type="text" class="popup__input" id="newItemName" placeholder="Название" name="profileName" required>
-          <input type="text" class="popup__input" id="newItemLink" placeholder="Ссылка на картинку" name="profileAbout" required>
+          <input type="text" class="popup__input" id="newItemLink" placeholder="Ссылка на картинку" name="profileAbout"
+            required>
           <button class="popup__save-btn popup__create-card-btn" type="submit">Создать</button>
         </form>
       </div>
@@ -66,15 +68,18 @@
       </div>
     </div>
     <template id="cards-template">
-      <article class="element">
-        <img class="element__image">
-        <button class="element__trash-btn" type="button"></button>
-        <div class="element__description">
-          <h2 class="element__title"></h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </article>
+      <ul>
+        <li class="element">
+          <img class="element__image">
+          <button class="element__trash-btn" type="button"></button>
+          <div class="element__description">
+            <h2 class="element__title"></h2>
+            <button class="element__like" type="button"></button>
+          </div>
+        </li>
+      </ul>
     </template>
+    <script src="./scripts/constants.js"></script>
     <script src="./scripts/index.js"></script>
   </div>
 </body>
