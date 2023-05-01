@@ -8,8 +8,7 @@ const config = {
 }
 
 // Поиск формы
-// const formElement = document.querySelector('.popup__content');
-const formElement = Array.from(document.querySelectorAll(config.formSelector));
+// const formElement = Array.from(document.querySelectorAll(config.formSelector));
 
 // Показывать ошибку (принимает форму, инпут и сообщение)
 const showError = (formElement, inputElement, errorMessage) => {

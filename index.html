@@ -39,15 +39,12 @@
         <button class="popup__close-btn" type="button"></button>
         <form class="popup__content" name="profileForm" method="post" novalidate>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <div class="popup__form-field">
-            <input type="text" class="popup__input" id="popupName" placeholder="Имя" name="profileName" minlength="2" maxlength="40" required>
-            <span class="popupName-error popup__input-error"></span>
-          </div>
-          <div class="popup__form-field">
-            <input type="text" class="popup__input" id="popupDescription" placeholder="О себе" name="profileAbout"
-              minlength="2" maxlength="200" required>
-            <span class="popupDescription-error popup__input-error"></span>
-          </div>
+          <input type="text" class="popup__input" id="popupName" placeholder="Имя" name="profileName" minlength="2"
+            maxlength="40" required>
+          <span class="popupName-error popup__input-error"></span>
+          <input type="text" class="popup__input" id="popupDescription" placeholder="О себе" name="profileAbout"
+            minlength="2" maxlength="200" required>
+          <span class="popupDescription-error popup__input-error"></span>
           <button class="popup__save-btn" type="submit">Сохранить</button>
         </form>
       </div>
@@ -57,15 +54,12 @@
         <button class="popup__close-btn" type="button"></button>
         <form class="popup__content popup-edit-card__content" name="profileForm" method="post" novalidate>
           <h2 class="popup__title">Новое место</h2>
-          <div class="popup__form-field">
-            <input type="text" class="popup__input" id="newItemName" placeholder="Название" name="profileName" minlength="2" maxlength="30" required>
-            <span class="newItemName-error popup__input-error"></span>
-          </div>
-          <div class="popup__form-field">
-            <input type="url" class="popup__input" id="newItemLink" placeholder="Ссылка на картинку"
-              name="profileAbout" required>
-            <span class="newItemLink-error popup__input-error"></span>
-          </div>
+          <input type="text" class="popup__input" id="newItemName" placeholder="Название" name="profileName"
+            minlength="2" maxlength="30" required>
+          <span class="newItemName-error popup__input-error"></span>
+          <input type="url" class="popup__input" id="newItemLink" placeholder="Ссылка на картинку" name="profileAbout"
+            required>
+          <span class="newItemLink-error popup__input-error"></span>
           <button class="popup__save-btn popup__create-card-btn" type="submit">Создать</button>
         </form>
       </div>
@@ -91,6 +85,7 @@
         </li>
       </ul>
     </template>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </div>

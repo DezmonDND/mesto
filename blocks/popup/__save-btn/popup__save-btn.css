@@ -12,7 +12,7 @@
     cursor: pointer;
 }
 
-.popup__save-btn:hover {
+.popup__save-btn:hover:enabled {
     opacity: .8;
     transition: .5s;
 }

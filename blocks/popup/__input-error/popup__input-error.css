@@ -4,7 +4,17 @@
     line-height: 15px;
     color: #FF0000;
     max-width: 358px;
-    position: absolute;
-    left: 0;
-    top: 30px;
+    margin: 0 36px 13px;
+    min-height: 30px;
+}
+
+.popup__input-error:last-of-type {
+    margin: 0 36px 31px;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__input-error {
+        margin-left: 22px;
+        margin-right: 22px;
+    }
 }
