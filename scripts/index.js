@@ -3,6 +3,7 @@ const popupEditProfile = document.querySelector('.popup-edit-profile');
 const imagePopup = document.querySelector('.popup-image');
 const popupContent = document.querySelector('.popup__content');
 const newCardForm = document.querySelector('.popup-edit-card');
+const popupContainer = document.querySelectorAll('.popup__container');
 
 const editBtn = document.querySelector('.profile__edit-button');
 const closeBtn = document.querySelectorAll('.popup__close-btn');
@@ -48,15 +49,36 @@ const initialCards = [
 // Popups
 function openPopup(modalWindow) {
     modalWindow.classList.add('popup_opened');
+    modalWindow.addEventListener('click', closePopupByClick)
+    document.addEventListener('keydown', hidePopupByEsc)
 }
 
 function closePopup(modalWindow) {
     modalWindow.classList.remove('popup_opened')
+    
 };
 
 function hideClosestPopup(evt) {
     closePopup(evt.target.closest('.popup'))
 };
+
+// Закрытие модального окна по клику на оверлей и нажатию на Esc
+function hidePopupByEsc(evt) {
+    if (evt.key === 'Escape') {
+        popups.forEach((element) => {
+            closePopup(element)
+        })
+    }
+}
+
+// Закрытие модального окна по нажатию Esc 
+function closePopupByClick(evt) {
+    if (evt.currentTarget === evt.target) {
+        popups.forEach((element) => {
+            closePopup(element)
+        })
+    }
+}
 
 // Buttons
 editBtn.addEventListener('click', function () {
@@ -111,7 +133,6 @@ initialCards.forEach((item) => {
 });
 
 // Save Forms
-
 function editProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = inputName.value;
@@ -130,6 +151,21 @@ function createCardFormSubmit(evt) {
 }
 
 newCardForm.addEventListener('submit', createCardFormSubmit);
+
+// Создание карточки по нажатию Enter
+function keyHandler(evt) {
+    if (evt.key === 'Enter' && isValid === true) {
+        imgName = newCardName.value;
+        imgLink = newCardLink.value;
+        elementsContainer.prepend(createCardElement(imgName, imgLink));
+        closePopup(newCardForm);
+    }
+}
+
+newCardForm.addEventListener('keydown', keyHandler);
+
+
+
 
 
 
