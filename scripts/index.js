@@ -3,10 +3,11 @@ const popupEditProfile = document.querySelector('.popup-edit-profile');
 const imagePopup = document.querySelector('.popup-image');
 const popupContent = document.querySelector('.popup__content');
 const newCardForm = document.querySelector('.popup-edit-card');
+const newCardFormContent = document.querySelector('.popup-edit-card__content');
 const popupContainer = document.querySelectorAll('.popup__container');
 
 const editBtn = document.querySelector('.profile__edit-button');
-const closeBtn = document.querySelectorAll('.popup__close-btn');
+const closeButtons = document.querySelectorAll('.popup__close-btn');
 const addNewCardBtn = document.querySelector('.profile__add-button');
 
 const inputName = popupContent.querySelector('#popupName');
@@ -46,6 +47,7 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
 // Popups
 function openPopup(modalWindow) {
     modalWindow.classList.add('popup_opened');
@@ -59,7 +61,13 @@ function closePopup(modalWindow) {
 };
 
 function hideClosestPopup(evt) {
-    closePopup(evt.target.closest('.popup'))
+    closePopup(evt.target.closest('.popup'));
+};
+
+const editProfileInputs = function () {
+    inputName.value = profileName.textContent;
+    inputDescription.value = profileDescription.textContent;
+    openPopup(popupEditProfile);
 };
 
 // Закрытие модального окна по клику на оверлей и нажатию на Esc
@@ -81,13 +89,9 @@ function closePopupByClick(evt) {
 }
 
 // Buttons
-editBtn.addEventListener('click', function () {
-    inputName.value = profileName.textContent;
-    inputDescription.value = profileDescription.textContent;
-    openPopup(popupEditProfile)
-})
+editBtn.addEventListener('click', editProfileInputs);
 
-closeBtn.forEach((element) => {
+closeButtons.forEach((element) => {
     element.addEventListener('click', hideClosestPopup);
 });
 
@@ -147,6 +151,7 @@ function createCardFormSubmit(evt) {
     imgName = newCardName.value;
     imgLink = newCardLink.value;
     elementsContainer.prepend(createCardElement(imgName, imgLink));
+    newCardFormContent.reset();
     closePopup(newCardForm);
 }
 
