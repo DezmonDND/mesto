@@ -1,7 +1,7 @@
 .popup__input {
     outline-color: #3F8FD2;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    border: none;  
+    border: none;
     width: 100%;
     padding: 0 0 10px;
 }
