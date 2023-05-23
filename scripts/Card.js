@@ -5,9 +5,9 @@ const closeButton = imagePopup.querySelector('.popup__close-btn');
 
 class Card {
     constructor(name, link, templateSelector) {
-        this.name = name,
-        this.link = link,
-        this.templateSelector = templateSelector;
+        this._name = name,
+        this._link = link,
+        this._templateSelector = templateSelector;
     }
 
     _getTemplate() {
@@ -21,21 +21,21 @@ class Card {
     }
 
     generateCard() {
-        this.element = this._getTemplate();
-        this.element.querySelector('.element__image').src = this.link;
-        this.element.querySelector('.element__title').textContent = this.name;
-        this.popupPicture = this.element.querySelector('.element__image');
-        this.likeBtnImage = this.element.querySelector('.element__like');
-        this.trashBtn = this.element.querySelector('.element__trash-btn');
-        this.popupPicture.alt = this.name;
+        this._element = this._getTemplate();
+        this._element.querySelector('.element__image').src = this._link;
+        this._element.querySelector('.element__title').textContent = this._name;
+        this._popupPicture = this._element.querySelector('.element__image');
+        this._likeBtnImage = this._element.querySelector('.element__like');
+        this._trashBtn = this._element.querySelector('.element__trash-btn');
+        this._popupPicture.alt = this._name;
         this._setEventListeners();
 
-        return this.element;
+        return this._element;
     }
 
     _openPopup() {
-        imagePopupPicture.src = this.link;
-        imagePopupDescription.textContent = this.name;
+        imagePopupPicture.src = this._link;
+        imagePopupDescription.textContent = this._name;
         imagePopup.classList.add('popup_opened');
     }
 
@@ -44,24 +44,24 @@ class Card {
     }
 
     _removeCard() {
-        this.element.remove();
+        this._element.remove();
     }
 
     _like() {
-        this.likeBtnImage.classList.toggle('element__like_active');
+        this._likeBtnImage.classList.toggle('element__like_active');
     }
 
     _setEventListeners() {
-        this.popupPicture.addEventListener('click', () => {
+        this._popupPicture.addEventListener('click', () => {
             this._openPopup();
         });
         closeButton.addEventListener('click', () => {
             this._closePopup();
         });
-        this.trashBtn.addEventListener('click', () => {
+        this._trashBtn.addEventListener('click', () => {
             this._removeCard();
         });
-        this.likeBtnImage.addEventListener('click', () => {
+        this._likeBtnImage.addEventListener('click', () => {
             this._like();
         });
     }

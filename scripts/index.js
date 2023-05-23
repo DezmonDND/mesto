@@ -1,6 +1,16 @@
-import {imagePopup, imagePopupPicture, imagePopupDescription, closeButton} from './Card.js'; 
-import { initialCards } from './cards.js';
+// import { imagePopup, imagePopupPicture, imagePopupDescription, closeButton } from './Card.js';
+import { initialCards } from './initialCards.js';
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
+const config = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-btn',
+    inactiveButtonClass: 'button__inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+}
 
 const popups = document.querySelectorAll('.popup');
 const popupList = Array.from(popups);
@@ -84,16 +94,21 @@ function editProfileFormSubmit(evt) {
 
 popupContent.addEventListener('submit', editProfileFormSubmit);
 
+function createCardElement(Object) {
+    const newCard = new Card(Object, cardsTemplate)
+    return newCard.generateCard();
+} 
+
 function createCardFormSubmit(evt) {
-    const inputList = Array.from(document.querySelectorAll(config.inputSelector));
-    const buttonElement = document.querySelector('.popup__create-card-btn');
+    // const inputList = Array.from(document.querySelectorAll(config.inputSelector));
+    // const buttonElement = document.querySelector('.popup__create-card-btn');
     const imgName = newCardName.value;
     const imgLink = newCardLink.value;
 
     evt.preventDefault();
     elementsContainer.prepend(createCardElement(imgName, imgLink));
     newCardFormContent.reset();
-    toggleButtonState(inputList, buttonElement);
+    // toggleButtonState(inputList, buttonElement);
     closePopup(newCardForm);
 }
 
@@ -109,13 +124,15 @@ function keyHandler(evt) {
     }
 }
 
+// Создание карточки с помощью метода Card и добавлеие ее в разметку
 initialCards.forEach(element => {
     const newCard = new Card(element.name, element.link);
     const cardElement = newCard.generateCard();
     document.querySelector('.elements').append(cardElement);
 });
 
-
-
-
-
+// Создание экземпляра класса с формой для валидации
+document.querySelectorAll('.popup__content').forEach((form) => {
+    const formValidator = new FormValidator(config, form);
+    formValidator.enableValidation();
+})
