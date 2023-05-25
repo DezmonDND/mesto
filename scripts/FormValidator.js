@@ -78,6 +78,7 @@ class FormValidator {
     _setEventListeners() {
         //Блокировка кнопки не дожидаясь ввода данных
         this._disableButton();
+        
         this._form.addEventListener('reset', () => {
             this._resetValidation();
         })

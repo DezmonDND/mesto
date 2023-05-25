@@ -7,7 +7,8 @@ const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup-edit-profile');
 const popupContent = document.querySelector('.popup__content');
 const newCardForm = document.querySelector('.popup-edit-card');
-const newCardFormContent = document.querySelector('.popup-edit-card__content');
+const profileForm = document.forms['profileForm'];
+const placeForm = document.forms['placeForm'];
 
 const editBtn = document.querySelector('.profile__edit-button');
 const addNewCardBtn = document.querySelector('.profile__add-button');
@@ -101,7 +102,7 @@ function createCardFormSubmit(evt) {
     const imgLink = newCardLink.value;
     const cardElement = createCard({ name: imgName, link: imgLink });
     elementsContainer.prepend(cardElement);
-    newCardFormContent.reset();
+    placeForm.reset();
     closePopup(newCardForm);
 }
 
@@ -115,7 +116,14 @@ initialCards.forEach((element) => {
 });
 
 // Создание экземпляра класса с формой для валидации
-document.querySelectorAll('.popup__content').forEach((form) => {
-    const formValidator = new FormValidator(config, form);
-    formValidator.enableValidation();
-});
+// document.querySelectorAll('.popup__content').forEach((form) => {
+//     const formValidator = new FormValidator(config, form);
+//     formValidator.enableValidation();
+// });
+
+const profileValidation = new FormValidator(config, profileForm);
+const placeValidation = new FormValidator(config, placeForm);
+
+profileValidation.enableValidation();
+placeValidation.enableValidation();
+
