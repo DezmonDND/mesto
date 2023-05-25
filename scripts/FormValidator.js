@@ -2,23 +2,34 @@ class FormValidator {
     // Принимает объект с селекторами и форму, которую нужно валидировать
     constructor(config, form) {
         this._inputSelector = config.inputSelector,
-        this._submitButtonSelector = config.submitButtonSelector,
-        this._inactiveButtonClass = config.inactiveButtonClass,
-        this._inputErrorClass = config.inputErrorClass,
-        this._errorClass = config.errorClass,
-        this._form = form;
+            this._submitButtonSelector = config.submitButtonSelector,
+            this._inactiveButtonClass = config.inactiveButtonClass,
+            this._inputErrorClass = config.inputErrorClass,
+            this._errorClass = config.errorClass,
+            this._form = form,
+            //Поиск кнопки в текущей форме
+            this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     }
     // Переключение кнопки, если фнукция hasInvalidInput возвращает true
     // значит блочим кнопку
+    _disableButton() {
+        this._buttonElement.classList.add(this._inactiveButtonClass);
+        this._buttonElement.disabled = true;
+    }
+
+    _enableButton() {
+        this._buttonElement.classList.remove(this._inactiveButtonClass)
+        this._buttonElement.disabled = false;
+    }
+
     _toggleButtonState() {
         if (this._hasInvalidInput()) {
-            this._buttonElement.classList.add(this._inactiveButtonClass);
-            this._buttonElement.disabled = true;
+            this._disableButton();
         } else {
-            this._buttonElement.classList.remove(this._inactiveButtonClass)
-            this._buttonElement.disabled = false;
+            this._enableButton();
         }
     }
+
     // Функция показывает ошибку (принимает инпут и сообщение)
     _showError(inputElement, errorMessage) {
         // Ищем span элемент ошибки в HTML
@@ -55,10 +66,22 @@ class FormValidator {
             return !inputElement.validity.valid;
         })
     }
+
+    _resetValidation() {
+        this._disableButton();
+        this._inputList.forEach((inputElement) => {
+            this._hideError(inputElement);
+        });
+    };
+
     // Функция добавляет слушатели всям полям формы 
     _setEventListeners() {
         //Блокировка кнопки не дожидаясь ввода данных
-        this._toggleButtonState();
+        this._disableButton();
+        this._form.addEventListener('reset', () => {
+            this._resetValidation();
+        })
+
         // на событие "input", при этом происходит проверка валидности
         // в каждом из полей
         this._inputList.forEach((inputElement) => {
@@ -69,14 +92,13 @@ class FormValidator {
             })
         })
     }
+
     // Запуск валидации. Для этого накладываем ранее написанные слушатели
     // каждому элементу формы
     enableValidation() {
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-        //Поиск кнопки в текущей форме
-        this._buttonElement = this._form.querySelector(this._submitButtonSelector)
         this._setEventListeners();
     }
 }
 
-export {FormValidator};
+export { FormValidator };

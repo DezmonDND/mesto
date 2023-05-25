@@ -1,13 +1,10 @@
-const imagePopup = document.querySelector('.popup-image');
-const imagePopupPicture = imagePopup.querySelector('.popup__picture');
-const imagePopupDescription = imagePopup.querySelector('.popup__image-description');
-const closeButton = imagePopup.querySelector('.popup__close-btn');
-
 class Card {
-    constructor(name, link, templateSelector) {
-        this._name = name,
-        this._link = link,
-        this._templateSelector = templateSelector;
+    constructor(data, templateSelector, handleOpenPopup, openPopup) {
+        this._name = data.name,
+        this._link = data.link,
+        this._templateSelector = templateSelector,
+        this._handleOpenPopup = handleOpenPopup,
+        this._openPopup = openPopup;
     }
 
     _getTemplate() {
@@ -22,29 +19,21 @@ class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__title').textContent = this._name;
+        this._popupTitle = this._element.querySelector('.element__title');
         this._popupPicture = this._element.querySelector('.element__image');
         this._likeBtnImage = this._element.querySelector('.element__like');
         this._trashBtn = this._element.querySelector('.element__trash-btn');
+        this._popupTitle.textContent = this._name;
         this._popupPicture.alt = this._name;
+        this._popupPicture.src = this._link;
         this._setEventListeners();
 
         return this._element;
     }
 
-    _openPopup() {
-        imagePopupPicture.src = this._link;
-        imagePopupDescription.textContent = this._name;
-        imagePopup.classList.add('popup_opened');
-    }
-
-    _closePopup() {
-        imagePopup.classList.remove('popup_opened');
-    }
-
     _removeCard() {
         this._element.remove();
+        this._element = null;
     }
 
     _like() {
@@ -53,10 +42,7 @@ class Card {
 
     _setEventListeners() {
         this._popupPicture.addEventListener('click', () => {
-            this._openPopup();
-        });
-        closeButton.addEventListener('click', () => {
-            this._closePopup();
+            this._handleOpenPopup(); 
         });
         this._trashBtn.addEventListener('click', () => {
             this._removeCard();
@@ -67,11 +53,4 @@ class Card {
     }
 }
 
-// initialCards.forEach(element => {
-//     const newCard = new Card(element.name, element.link);
-//     const cardElement = newCard.generateCard();
-//     document.querySelector('.elements').append(cardElement);
-// });
-
-export {imagePopup, imagePopupPicture, imagePopupDescription, closeButton};
-export {Card};
+export { Card };
