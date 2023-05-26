@@ -1,10 +1,9 @@
 class Card {
-    constructor(data, templateSelector, handleOpenPopup, openPopup) {
+    constructor(data, templateSelector, handleOpenPopup) {
         this._name = data.name,
         this._link = data.link,
         this._templateSelector = templateSelector,
-        this._handleOpenPopup = handleOpenPopup,
-        this._openPopup = openPopup;
+        this._handleOpenPopup = handleOpenPopup;
     }
 
     _getTemplate() {
@@ -42,7 +41,7 @@ class Card {
 
     _setEventListeners() {
         this._popupPicture.addEventListener('click', () => {
-            this._handleOpenPopup(); 
+            this._handleOpenPopup(this._name, this._link);
         });
         this._trashBtn.addEventListener('click', () => {
             this._removeCard();

@@ -34,11 +34,11 @@ function openPopup(modalWindow) {
 }
 
 // Функция открывает попап с картинкой для импорта в класс Card
-function handleOpenPopup() {
-    imagePopupPicture.src = this._popupPicture.src;
-    imagePopupDescription.textContent = this._popupTitle.textContent;
-    imagePopupPicture.alt = this._popupTitle.textContent;
-    this._openPopup(imagePopup);
+function handleOpenPopup(name, link) {
+    imagePopupPicture.src = link;
+    imagePopupDescription.textContent = name;
+    imagePopupPicture.alt = name;
+    openPopup(imagePopup);
 }
 
 function closePopup(modalWindow) {
@@ -48,8 +48,8 @@ function closePopup(modalWindow) {
 
 // Закрытие модального окна по клику на оверлей и нажатию на Esc
 function hidePopupByEsc(evt) {
-    const openedPopup = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
 }
@@ -91,7 +91,7 @@ addNewCardBtn.addEventListener('click', () => openPopup(newCardForm));
 
 // Функция создает карточку с помощью метода Card
 function createCard(obj) {
-    const card = new Card(obj, cardsTemplate, handleOpenPopup, openPopup);
+    const card = new Card(obj, cardsTemplate, handleOpenPopup);
     return card.generateCard();
 }
 
