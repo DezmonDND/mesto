@@ -8,17 +8,16 @@
   <meta name="keywords" content="html, css, javascript">
   <meta name="author" content="Денис Недосейкин">
   <title>Mesto: базовая функциональность</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="root">
   <div class="page">
     <header class="header">
-      <img src="./images/header_logo.svg" alt="Логотип шапка" class="header__logo">
+      <img src="<%=require('./images/header_logo.svg')%>" alt="Логотип шапка" class="header__logo">
     </header>
     <main class="content">
       <section class="profile">
-        <img src="./images/avatar.png" alt="Аватар" class="profile__avatar">
+        <img src="<%=require('./images/avatar.png')%>" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__buttons">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -86,7 +85,6 @@
       </ul>
     </template>
   </div>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

@@ -18,6 +18,8 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 
+import '../pages/index.css';
+
 // Создание карточек из массива InitialCards
 
 const popupWithImage = new PopupWithImage('.popup-image');
