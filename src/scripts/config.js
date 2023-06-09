@@ -1,3 +1,4 @@
+// Селекторы для формы валидации
 const config = {
     formSelector: '.popup__content',
     inputSelector: '.popup__input',
