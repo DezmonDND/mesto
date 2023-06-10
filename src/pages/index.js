@@ -3,8 +3,6 @@ import {
     addNewCardBtn,
     inputName,
     inputDescription,
-    newCardName,
-    newCardLink,
     profileFormVal,
     placeForm
 } from '../scripts/constants.js';
@@ -54,12 +52,8 @@ const userInfo = new UserInfo('.profile__name', '.profile__description');
 
 const profileForm = new PopupWithForm({
     popupSelector: '.popup-edit-profile',
-    handleFormSubmit: () => {
-        // profileData.name = inputName.value;
-        // profileData.info = inputDescription.value;
-        const name = inputName.value;
-        const info = inputDescription.value;
-        userInfo.setUserInfo({name, info});
+    handleFormSubmit: (profileData) => {
+        userInfo.setUserInfo(profileData);
         profileForm.close()
     }
 });
@@ -67,10 +61,11 @@ const profileForm = new PopupWithForm({
 // Добавление карточки из формы в разметку
 const newCardForm = new PopupWithForm({
     popupSelector: '.popup-edit-card',
-    handleFormSubmit: () => {
+    handleFormSubmit: (profileData) => {
+        console.log(profileData);
         const cardData = {
-            name: newCardName.value,
-            link: newCardLink.value
+            name: profileData.profileName,
+            link: profileData.profileAbout
         }
         const cardElement = createCard(cardData);
         cardList.addNewItem(cardElement);
@@ -87,10 +82,9 @@ addNewCardBtn.addEventListener('click', () => {
 
 // Редактировать профиль
 profileEditBtn.addEventListener('click', () => {
-    // const getUserInfo = userInfo.getUserInfo();
-    // inputName.value = getUserInfo.name;
-    // inputDescription.value = getUserInfo.info;
-    profileForm.setInputValues(userInfo.getUserInfo());
+    const { name, info } = userInfo.getUserInfo();
+    inputName.value = name;
+    inputDescription.value = info;
     profileForm.open();
 });
 
