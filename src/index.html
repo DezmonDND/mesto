@@ -7,13 +7,14 @@
   <meta name="description" content="Чтевертая проектная работа: Mesto: базовая функциональность">
   <meta name="keywords" content="html, css, javascript">
   <meta name="author" content="Денис Недосейкин">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Mesto: базовая функциональность</title>
 </head>
 
 <body class="root">
   <div class="page">
     <header class="header">
-      <img src="<%=require('./images/header_logo.svg')%>" alt="Логотип шапка" class="header__logo">
+    <img src="<%=require('./images/header_logo.svg')%>" alt="Логотип шапка" class="header__logo">
     </header>
     <main class="content">
       <section class="profile">
@@ -72,7 +73,7 @@
         </div>
       </div>
     </div>
-    <template id="cards-template">
+    <template class="cards-template" id="cards-template">
       <ul>
         <li class="element">
           <img class="element__image">
@@ -85,6 +86,7 @@
       </ul>
     </template>
   </div>
+  <!-- <script type="module" src="./pages/index.js"></script> -->
 </body>
 
 </html>

@@ -24,16 +24,23 @@ import '../pages/index.css';
 
 const popupWithImage = new PopupWithImage('.popup-image');
 
+// Функция создания карточки
+const createCard = (data) => {
+    const card = new Card({
+        data,
+        templateSelector: '.cards-template',
+        handleCardClick: (card) => {
+            popupWithImage.open(card)
+        }
+    });
+    return card.generateCard();
+};
+
+// Создание краточек из маccива
 const cardList = new Section({
     items: initialCards,
     renderer: (data) => {
-        const card = new Card({
-            data,
-            handleCardClick: (card) => {
-                popupWithImage.open(card)
-            }
-        });
-        const newCard = card.generateCard();
+        const newCard = createCard(data);
         cardList.addItem(newCard);
     }
 },
@@ -47,24 +54,15 @@ const userInfo = new UserInfo('.profile__name', '.profile__description');
 
 const profileForm = new PopupWithForm({
     popupSelector: '.popup-edit-profile',
-    handleFormSubmit: (profileData) => {
-        profileData.name = inputName.value;
-        profileData.info = inputDescription.value;
-        userInfo.setUserInfo(profileData);
+    handleFormSubmit: () => {
+        // profileData.name = inputName.value;
+        // profileData.info = inputDescription.value;
+        const name = inputName.value;
+        const info = inputDescription.value;
+        userInfo.setUserInfo({name, info});
         profileForm.close()
     }
 });
-
-// Функция создания карточки
-const createCard = (data) => {
-    const card = new Card({
-        data,
-        handleCardClick: (card) => {
-            popupWithImage.open(card)
-        }
-    });
-    return card.generateCard();
-};
 
 // Добавление карточки из формы в разметку
 const newCardForm = new PopupWithForm({
@@ -89,10 +87,11 @@ addNewCardBtn.addEventListener('click', () => {
 
 // Редактировать профиль
 profileEditBtn.addEventListener('click', () => {
-    const getUserInfo = userInfo.getUserInfo();
-    inputName.value = getUserInfo.name;
-    inputDescription.value = getUserInfo.info;
-    profileForm.open()
+    // const getUserInfo = userInfo.getUserInfo();
+    // inputName.value = getUserInfo.name;
+    // inputDescription.value = getUserInfo.info;
+    profileForm.setInputValues(userInfo.getUserInfo());
+    profileForm.open();
 });
 
 // Добавление слушателей

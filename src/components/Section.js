@@ -9,7 +9,6 @@ export class Section {
     // массива метод addItem.
     renderItems() {
         this._initialCards.forEach(element => {
-            // this._addItem(this.renderer(element));
             this.renderer(element);
         });
     }
