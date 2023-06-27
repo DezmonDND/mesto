@@ -20,7 +20,7 @@ export const profilePopupSelector = ".popup-edit-profile";
 export const imagePopupSelector = ".popup-image";
 export const cardPopupSelector = ".popup-edit-card";
 export const deletePopupSelector = ".popup-delete-card";
-export const avatarPopupSelector = ".popup__avatar";
+export const avatarPopupSelector = ".popup-avatar";
 export const gridBlockSelector = ".elements";
 
 // Селекторы для попапа с профилем и аватаром
