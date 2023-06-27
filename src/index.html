@@ -14,17 +14,22 @@
 <body class="root">
   <div class="page">
     <header class="header">
-    <img src="<%=require('./images/header_logo.svg')%>" alt="Логотип шапка" class="header__logo">
+      <img src="<%=require('./images/header_logo.svg')%>" alt="Логотип шапка" class="header__logo">
     </header>
     <main class="content">
       <section class="profile">
-        <img src="<%=require('./images/avatar.png')%>" alt="Аватар" class="profile__avatar">
+        <!-- <img src="<%=require('./images/avatar.png')%>" alt="Аватар" class="profile__avatar"> -->
+        <button class="profile__avatar-button">
+          <img alt="Аватар" class="profile__avatar">
+        </button>
         <div class="profile__info">
           <div class="profile__buttons">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <!-- <h1 class="profile__name">Жак-Ив Кусто</h1> -->
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button" type="button"></button>
           </div>
-          <p class="profile__description">Исследователь океана</p>
+          <!-- <p class="profile__description">Исследователь океана</p> -->
+          <p class="profile__description"></p>
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
@@ -34,6 +39,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2023 Недосейкин Денис</p>
     </footer>
+    <!-- Попап редактирования профиля -->
     <div class="popup popup-edit-profile">
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
@@ -49,6 +55,7 @@
         </form>
       </div>
     </div>
+    <!-- Попап добавления новой карточки -->
     <div class="popup popup-edit-card">
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
@@ -64,6 +71,7 @@
         </form>
       </div>
     </div>
+    <!-- Попап увеличения картинки -->
     <div class="popup popup-image">
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
@@ -73,6 +81,29 @@
         </div>
       </div>
     </div>
+    <!-- Попап удаления карты -->
+    <div class="popup popup-delete-card">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <form class="popup__content popup-edit-card__content" name="placeForm" method="post" novalidate>
+          <h2 class="popup__delete-title">Вы уверены?</h2>
+          <button class="popup__save-btn popup__create-card-btn" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+    <!-- Попап редактирования аватара -->
+    <div class="popup popup__avatar">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <form class="popup__content popup__edit-avatar" name="avatarForm" method="post" novalidate>
+          <h2 class="popup__title popup__edit-avatar">Обновить аватар</h2>
+          <input type="url" class="popup__input" id="newAvatarImage" placeholder="Ссылка на изображение"
+            name="avatarLink" required>
+          <span class="newAvatarImage-error popup__avatar-error"></span>
+          <button class="popup__save-btn popup__save-btn_avatar" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
     <template class="cards-template" id="cards-template">
       <ul>
         <li class="element">
@@ -80,7 +111,10 @@
           <button class="element__trash-btn" type="button"></button>
           <div class="element__description">
             <h2 class="element__title"></h2>
-            <button class="element__like" type="button"></button>
+            <div class="element__likes">
+              <button class="element__like" type="button"></button>
+              <p class="element__counter"></p>
+            </div>
           </div>
         </li>
       </ul>

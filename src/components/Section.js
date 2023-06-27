@@ -1,14 +1,13 @@
 export class Section {
-    constructor({ items, renderer }, containerSelector) {
-        this._initialCards = items;
+    constructor({ renderer }, containerSelector) {
         this.renderer = renderer;
         this._containerSelector = document.querySelector(containerSelector);
     }
 
     // перебирает массив данных _initialCards. Вызывает для каждого элемента 
     // массива метод addItem.
-    renderItems() {
-        this._initialCards.forEach(element => {
+    renderItems(items) {
+        items.forEach(element => {
             this.renderer(element);
         });
     }
@@ -21,5 +20,4 @@ export class Section {
     addNewItem(cardElement) {
         this._containerSelector.prepend(cardElement);
     }
-
 }

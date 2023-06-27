@@ -2,13 +2,13 @@ class FormValidator {
     // Принимает объект с селекторами и форму, которую нужно валидировать
     constructor(config, form) {
         this._inputSelector = config.inputSelector,
-            this._submitButtonSelector = config.submitButtonSelector,
-            this._inactiveButtonClass = config.inactiveButtonClass,
-            this._inputErrorClass = config.inputErrorClass,
-            this._errorClass = config.errorClass,
-            this._form = form,
-            //Поиск кнопки в текущей форме
-            this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+        this._submitButtonSelector = config.submitButtonSelector,
+        this._inactiveButtonClass = config.inactiveButtonClass,
+        this._inputErrorClass = config.inputErrorClass,
+        this._errorClass = config.errorClass,
+        this._form = form,
+        //Поиск кнопки в текущей форме
+        this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     }
     // Переключение кнопки, если фнукция hasInvalidInput возвращает true
     // значит блочим кнопку
@@ -36,6 +36,7 @@ class FormValidator {
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
 
         inputElement.classList.add(this._inputErrorClass);
+        console.log(errorElement);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._errorClass);
     }
