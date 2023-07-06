@@ -42,7 +42,6 @@ export class Card {
             .content
             .querySelector('.element')
             .cloneNode(true);
-
         return cardElement;
     }
 
@@ -53,25 +52,6 @@ export class Card {
     _handleDelete = () => {
         this._openPopupDelete({ element: this, cardId: this._cardId });
     };
-
-    // Проверить в объекте, есть ли лайк с моим id и вернуть true или false
-    // isLiked(data) {
-    //     console.log(data);
-    //     return data.likes.some((like) => like._id === this._myId);
-    // }
-
-    // Если есть, закрасить сердце и присвоить счетчику новое значение
-    // handleLikeButton(data) {
-    //     if (this.isLiked(data)) {
-    //         console.log(this.isLiked(data));
-    //         this._likeBtnImage.classList.add('element__like_active');
-    //         this._likeCounter.textContent = data.likes.length;
-    //     } else {
-    //         console.log(this.isLiked(data));
-    //         this._likeBtnImage.classList.remove('element__like_active');
-    //         this._likeCounter.textContent = data.likes.length;
-    //     }
-    // }
 
     // Проверить в объекте, есть ли лайк с моим id. Если есть, закрасить сердце.
     _isLiked() {
@@ -106,7 +86,6 @@ export class Card {
         this._popupPicture.alt = this._name;
         this._popupPicture.src = this._link;
         this._likeCounter.textContent = this._likes.length;
-        // this.handleLikeButton(this._data);
         this._isLiked();
         this._changeDeleteCardButton();
         this._setEventListeners();
@@ -120,9 +99,6 @@ export class Card {
     _setEventListeners() {
         this._popupPicture.addEventListener('click', this._handleOpenPopupImage)
         this._trashBtn.addEventListener('click', this._handleDelete);
-        // this._likeBtnImage.addEventListener('click', () => {
-        //     this._changeLike();
-        // });
         this._likeBtnImage.addEventListener("click", this._handleLikeClick);
     }
 }

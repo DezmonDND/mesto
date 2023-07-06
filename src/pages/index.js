@@ -73,22 +73,6 @@ const createCard = (data) => {
         cardTemplateSelector,
         popupWithImage.open,
         deleteCardPopup.open,
-        // function changeLike() {
-        //     if (this.isLiked(data)) {
-        //         console.log(this);
-        //         api.deleteLike(data._id)
-        //             .then((res) => {
-        //                 this.handleLikeButton(res);
-        //                 this._data.likes.length = res.likes.length;
-        //             })
-        //     } else {
-        //         api.addLike(data._id)
-        //             .then((res) => {
-        //                 this.handleLikeButton(res);
-        //                 this._data.likes.length = res.likes.length;
-        //             })
-        //     }
-        // }
         function changeLike(likeItem, cardId) {
             if (likeItem.classList.contains('element__like_active')) {
                 api.deleteLike(cardId)
